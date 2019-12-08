@@ -24,3 +24,7 @@ body {
   height: 100vh;
   background-color: aliceblue;
 }
+
+#email-list {
+  width: 25%;
+}
