@@ -11,11 +11,11 @@ export class EmailList extends Component {
     return (
       <div id="email-list">
         <ul>
-          {this.props.currentAccount.mail.map(mail => {
+          {this.props.currentAccount.mail.map((mail,index) => {
             return (
               <li key={mail.date}>
                 <input type="checkbox"></input>
-                <div onClick={() => {this.props.setEmailRead(mail.date);this.props.selectEmail(mail.date)}}>
+                <div onClick={() => {this.props.setEmailRead(mail.date);this.props.selectEmail(index)}}>
                   <div>
                     <h5>{mail.subject}</h5>
                     <p>{mail["sender name"]}</p>

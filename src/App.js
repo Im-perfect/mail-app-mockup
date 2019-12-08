@@ -9,15 +9,27 @@ import EmailDetails from "./components/EmailDetails";
 
 class App extends React.Component {
   state = {
-    selectedEmail: this.props.currentAccount.mail[0]
+    selectedEmailIndex: 0
   };
 
-  selectEmail = date => {
+  selectEmail = index => {
     this.setState({
-      selectedEmail: this.props.currentAccount.mail.find(
-        mail => mail.date === date
-      )
+      selectedEmailIndex: index
     });
+  };
+
+  selectPrevious = () => {
+    if (this.state.selectedEmailIndex > 0)
+      this.setState({
+        selectedEmailIndex: this.state.selectedEmailIndex - 1
+      });
+  };
+
+  selectNext = () => {
+    if (this.state.selectedEmailIndex < this.props.currentAccount.mail.length - 1)
+      this.setState({
+        selectedEmailIndex: this.state.selectedEmailIndex + 1
+      });
   };
 
   render() {
@@ -31,7 +43,11 @@ class App extends React.Component {
             <HeaderBar />
             <div className="wrapper">
               <EmailList selectEmail={this.selectEmail} />
-              <EmailDetails email={this.state.selectedEmail} />
+              <EmailDetails
+                emailIndex={this.state.selectedEmailIndex}
+                selectPrevious={this.selectPrevious}
+                selectNext={this.selectNext}
+              />
             </div>
           </div>
         </div>
