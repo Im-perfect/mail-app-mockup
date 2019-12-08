@@ -7,6 +7,10 @@ body {
   margin: 0;
 }
 
+.wrapper {
+  display: flex;
+}
+
 #side-bar {
   width: 200px;
   background-color: #4987a1;

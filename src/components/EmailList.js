@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { setEmailRead } from "../actions/email";
 
 export class EmailList extends Component {
   getDate = timeStamp => {
@@ -37,19 +38,15 @@ export class EmailList extends Component {
     }
   };
 
-  setEmailRead = (index) =>{
-      
-  }
-
   render() {
     return (
       <div>
         <ul>
-          {this.props.currentAccount.mail.map((mail,index) => {
+          {this.props.currentAccount.mail.map(mail => {
             return (
               <li key={mail.date}>
                 <input type="checkbox"></input>
-                <div onClick={()=>this.setEmailRead(index)}>
+                <div onClick={() => this.props.setEmailRead(mail.date)}>
                   <div>
                     <h5>{mail.subject}</h5>
                     <p>{mail["sender name"]}</p>
@@ -71,6 +68,6 @@ export class EmailList extends Component {
 
 const mapStateToProps = ({ currentAccount }) => ({ currentAccount });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { setEmailRead };
 
 export default connect(mapStateToProps, mapDispatchToProps)(EmailList);
