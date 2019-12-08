@@ -3,19 +3,26 @@ import { connect } from "react-redux";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { setEmailRead } from "../actions/email";
-import {getDate} from '../actions/helper'
+import { getDate } from "../actions/helper";
 
 export class EmailList extends Component {
-
   render() {
+    const emails = this.props.currentAccount.mail.filter(mail =>
+      mail.subject.toLowerCase().includes(this.props.searchTerm.toLowerCase())
+    );
     return (
       <div id="email-list">
         <ul>
-          {this.props.currentAccount.mail.map((mail,index) => {
+          {emails.map((mail, index) => {
             return (
               <li key={mail.date}>
                 <input type="checkbox"></input>
-                <div onClick={() => {this.props.setEmailRead(mail.date);this.props.selectEmail(index)}}>
+                <div
+                  onClick={() => {
+                    this.props.setEmailRead(mail.date);
+                    this.props.selectEmail(index);
+                  }}
+                >
                   <div>
                     <h5>{mail.subject}</h5>
                     <p>{mail["sender name"]}</p>

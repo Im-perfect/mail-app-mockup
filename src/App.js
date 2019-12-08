@@ -9,8 +9,9 @@ import EmailDetails from "./components/EmailDetails";
 
 class App extends React.Component {
   state = {
+    emails: this.props.currentAccount.mail,
     selectedEmailIndex: 0,
-    searchTerm: null
+    searchTerm: ""
   };
 
   selectEmail = index => {
@@ -27,17 +28,20 @@ class App extends React.Component {
   };
 
   selectNext = () => {
-    if (this.state.selectedEmailIndex < this.props.currentAccount.mail.length - 1)
+    if (
+      this.state.selectedEmailIndex <
+      this.props.currentAccount.mail.length - 1
+    )
       this.setState({
         selectedEmailIndex: this.state.selectedEmailIndex + 1
       });
   };
 
-  searchSubject = (term) => {
+  searchSubject = term => {
     this.setState({
       searchTerm: term
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -49,7 +53,10 @@ class App extends React.Component {
           <div>
             <HeaderBar searchSubject={this.searchSubject} />
             <div className="wrapper">
-              <EmailList selectEmail={this.selectEmail} searchTerm={this.state.searchTerm}/>
+              <EmailList
+                selectEmail={this.selectEmail}
+                searchTerm={this.state.searchTerm}
+              />
               <EmailDetails
                 emailIndex={this.state.selectedEmailIndex}
                 selectPrevious={this.selectPrevious}
