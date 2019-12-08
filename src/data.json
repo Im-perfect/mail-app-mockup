@@ -9,14 +9,18 @@
                     "date": 1575474762.689671,
                     "sender email": "r.volkwist@hotmail.com",
                     "sender name": "Robert Volkwist",
-                    "subject": "Business Proposal"
+                    "subject": "Business Proposal",
+                    "category": "inbox",
+		            "read": "false"
                 }, 
                 {
                     "content": "Dear Madam, \n your tenant is very noise. Their music keeps me up at night!",
                     "date": 1575473762.259641,
                     "sender email": "a.jacobs@msd.com",
                     "sender name": "Aletta Jacobs",
-                    "subject": "Noise from upstairs"
+                    "subject": "Noise from upstairs",
+                    "category": "inbox",
+		            "read": "false"
                 } ],
             "name": "Gustav",
             "surname": "Fugger"
@@ -29,14 +33,18 @@
                     "date": 1575474762.689671,
                     "sender email": "r.volkwist@hotmail.com",
                     "sender name": "Robert Volkwist",
-                    "subject": "Business Proposal"
+                    "subject": "Business Proposal",
+                    "category": "inbox",
+		            "read": "false"
                 }, 
                 {
                     "content": "Dear Madam, \n your tenant is <b>very<b>noise. Their music keeps me up at night!",
                     "date": 1575473762.259641,
                     "sender email": "a.jacobs@msd.com",
                     "sender name": "Aletta Jacobs",
-                    "subject": "Noise from upstairs"
+                    "subject": "Noise from upstairs",
+                    "category": "inbox",
+		            "read": "false"
                 } ],
             "name": "Henrietta",
             "surname": "Van Groningen Der Lorin"
