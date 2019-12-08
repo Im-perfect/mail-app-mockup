@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import "./App.css";
 import "./css/main.css";
 import SideBar from "./components/SideBar";
@@ -6,23 +7,56 @@ import EmailList from "./components/EmailList";
 import HeaderBar from "./components/HeaderBar";
 import EmailDetails from "./components/EmailDetails";
 
-function App() {
-  return (
-    <div>
-      <div id="side-bar">
-        <SideBar />
-      </div>
-      <div id="mailbox-container">
-        <div>
-          <HeaderBar />
-          <div className="wrapper">
-            <EmailList />
-            <EmailDetails />
+class App extends React.Component {
+  state = {
+    selectedEmailIndex: 0
+  };
+
+  selectEmail = index => {
+    this.setState({
+      selectedEmailIndex: index
+    });
+  };
+
+  selectPrevious = () => {
+    if (this.state.selectedEmailIndex > 0)
+      this.setState({
+        selectedEmailIndex: this.state.selectedEmailIndex - 1
+      });
+  };
+
+  selectNext = () => {
+    if (this.state.selectedEmailIndex < this.props.currentAccount.mail.length - 1)
+      this.setState({
+        selectedEmailIndex: this.state.selectedEmailIndex + 1
+      });
+  };
+
+  render() {
+    return (
+      <div>
+        <div id="side-bar">
+          <SideBar />
+        </div>
+        <div id="mailbox-container">
+          <div>
+            <HeaderBar />
+            <div className="wrapper">
+              <EmailList selectEmail={this.selectEmail} />
+              <EmailDetails
+                emailIndex={this.state.selectedEmailIndex}
+                selectPrevious={this.selectPrevious}
+                selectNext={this.selectNext}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
+const mapStateToProps = ({ currentAccount }) => ({ currentAccount });
 
-export default App;
+const mapDispatchToProps = {};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

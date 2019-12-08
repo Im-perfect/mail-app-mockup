@@ -1,6 +1,8 @@
 import { accounts } from "../data.json";
 
-const reducer = (state = accounts[0], action = {}) => {
+const initialStateMail = accounts[0].mail.sort((a, b) => b.date-a.date)
+
+const reducer = (state = {...accounts[0], mail: initialStateMail}, action = {}) => {
   switch (action.type) {
     case "SET_EMAIL_READ":
       const newMail = state.mail.map(mail =>
