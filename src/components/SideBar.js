@@ -11,6 +11,16 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class SideBar extends Component {
+  state = {
+    selected: "inbox"
+  };
+
+  sideBarSelect = selection => {
+    this.setState({
+      selected: selection
+    });
+  };
+
   render() {
     return (
       <div>
@@ -22,23 +32,25 @@ export class SideBar extends Component {
             Compose
           </button>
         </div>
-        <ul className="cat">
-          <li>
+        <ul className="category">
+          <li name="inbox" onClick={() => this.sideBarSelect("inbox")}>
             <FontAwesomeIcon icon={faInbox} />
             Inbox
-            <span className="item-count">0</span>
+            <span className="count">
+              {this.props.currentAccount.mail.filter(mail => mail.read==="false").length}
+            </span>
           </li>
-          <li>
+          <li name="draft" onClick={() => this.sideBarSelect("drafts")}>
             <FontAwesomeIcon icon={faEdit} />
             Drafts
           </li>
-          <li>
+          <li name="sent" onClick={() => this.sideBarSelect("sent")}>
             <FontAwesomeIcon icon={faPaperPlane} /> Sent
           </li>
-          <li>
+          <li name="spam" onClick={() => this.sideBarSelect("spam")}>
             <FontAwesomeIcon icon={faMinusCircle} /> Spam
           </li>
-          <li>
+          <li name="trash" onClick={() => this.sideBarSelect("trash")}>
             <FontAwesomeIcon icon={faTrashAlt} /> Trash
           </li>
         </ul>
@@ -47,7 +59,9 @@ export class SideBar extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = ({ currentAccount }) => ({
+  currentAccount
+});
 
 const mapDispatchToProps = {};
 
