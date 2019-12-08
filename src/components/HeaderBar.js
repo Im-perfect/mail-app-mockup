@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Account from "./Account"
 
 export class HeaderBar extends Component {
     render() {
         return (
             <div>
-                
+                <Account />
             </div>
         )
     }
