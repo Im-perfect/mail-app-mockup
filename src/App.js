@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import "./css/main.css"
+import SideBar from "./components/SideBar";
+import EmailList from "./components/EmailList";
+import HeaderBar from "./components/HeaderBar";
+import EmailDetails from "./components/EmailDetails";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div id="side-bar">
+        <SideBar />
+      </div>
+      <div id="mailbox-container">
+        <div>
+          <HeaderBar />
+          <EmailList />
+          <EmailDetails />
+        </div>
+      </div>
     </div>
   );
 }
