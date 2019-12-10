@@ -7,13 +7,13 @@ import { getDate } from "../actions/helper";
 
 export class EmailList extends Component {
   render() {
-    const emails = this.props.currentAccount.mail.filter(mail =>
-      mail.subject.toLowerCase().includes(this.props.searchTerm.toLowerCase())
-    );
+    // const emails = this.props.currentAccount.mail.filter(mail =>
+    //   mail.subject.toLowerCase().includes(this.props.searchTerm.toLowerCase())
+    // );
     return (
       <div id="email-list">
         <ul>
-          {emails.map((mail, index) => {
+          {this.props.emails.map((mail, index) => {
             return (
               <li key={mail.date}>
                 <input type="checkbox"></input>

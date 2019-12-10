@@ -7,8 +7,8 @@ import { getDate } from "../actions/helper";
 
 export class EmailContent extends Component {
   render() {
-    const { subject, date, content } = this.props.currentAccount.mail[this.props.emailIndex];
-    const senderName = this.props.currentAccount.mail[this.props.emailIndex]["sender name"];
+    const { subject, date, content } = this.props.emails[this.props.emailIndex];
+    const senderName = this.props.emails[this.props.emailIndex]["sender name"];
     const { surname, name } = this.props.currentAccount;
     return (
       <div>
