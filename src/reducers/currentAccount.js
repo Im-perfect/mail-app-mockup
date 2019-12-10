@@ -8,12 +8,17 @@ const reducer = (
 ) => {
   switch (action.type) {
     case "SWITCH_ACCOUNT":
-      return {...accounts[action.accountIndex]};
+      return { ...accounts[action.accountIndex] };
     case "SET_EMAIL_READ":
-      const newMail = state.mail.map(mail =>
+      const readMail = state.mail.map(mail =>
         mail.date === action.date ? { ...mail, read: "true" } : mail
       );
-      return { ...state, mail: newMail };
+      return { ...state, mail: readMail };
+    case "DELETE_EMAIL":
+      const deletedMail = state.mail.map((mail, index) =>
+        action.deletedIndex[index] ? { ...mail, category: "trash" } : mail
+      );
+      return { ...state, mail: deletedMail };
     default:
       return state;
   }

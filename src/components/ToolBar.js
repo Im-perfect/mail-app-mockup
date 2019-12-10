@@ -1,24 +1,38 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-    faEyeSlash,
-    faTrashAlt,
-    faMinusCircle
-  } from "@fortawesome/free-solid-svg-icons";
-  import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+  faEyeSlash,
+  faTrashAlt,
+  faMinusCircle
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { deleteEmail } from "../actions/email";
 
 export class ToolBar extends Component {
-    toggleCheckAll = () => {
-
-    }
   render() {
     return (
       <div>
-        <input type="checkbox" onChange={this.props.toggleCheckAll} checked={this.props.checkedAll}/>
+        <input
+          type="checkbox"
+          onChange={this.props.toggleCheckAll}
+          checked={this.props.checkedAll}
+        />
         <div>
-            <button onClick={this.deleteEmail}><FontAwesomeIcon icon={faEyeSlash} /></button>
-            <button><FontAwesomeIcon icon={faTrashAlt} /></button>
-            <button><FontAwesomeIcon icon={faMinusCircle} /></button>
+          <button>
+            <FontAwesomeIcon icon={faEyeSlash} />
+          </button>
+          <button
+            onClick={() => {
+              this.props
+                .deleteEmail(this.props.checked)
+                .then(() => this.props.updateList());
+            }}
+          >
+            <FontAwesomeIcon icon={faTrashAlt} />
+          </button>
+          <button>
+            <FontAwesomeIcon icon={faMinusCircle} />
+          </button>
         </div>
       </div>
     );
@@ -27,6 +41,6 @@ export class ToolBar extends Component {
 
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { deleteEmail };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToolBar);

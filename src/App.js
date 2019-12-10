@@ -10,7 +10,9 @@ class App extends React.Component {
   state = {
     selectedEmailIndex: 0,
     searchTerm: "",
-    emails: this.props.currentAccount.mail
+    emails: this.props.currentAccount.mail.filter(
+      mail => mail.category === "inbox"
+    )
   };
 
   selectEmail = index => {
@@ -42,6 +44,15 @@ class App extends React.Component {
     });
   };
 
+  updateList = () => {
+    console.log("update")
+    this.setState({
+      emails: this.props.currentAccount.mail.filter(
+        mail => mail.category === "inbox"
+      )
+    })
+  }
+
   render() {
     return (
       <div>
@@ -59,6 +70,7 @@ class App extends React.Component {
                 selectEmail={this.selectEmail}
                 selectPrevious={this.selectPrevious}
                 selectNext={this.selectNext}
+                updateList={this.updateList}
               />
             </div>
           </div>

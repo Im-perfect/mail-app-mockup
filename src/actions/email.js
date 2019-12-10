@@ -4,3 +4,13 @@ export const setEmailRead = date => dispatch => {
     date
   });
 };
+
+export const deleteEmail = deletedIndex => dispatch => {
+  return new Promise((resolve, reject) => {
+    dispatch({
+      type: "DELETE_EMAIL",
+      deletedIndex
+    });
+    resolve();
+  });
+};

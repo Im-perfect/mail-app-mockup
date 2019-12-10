@@ -60,6 +60,8 @@ export class EmailDetailsContainer extends Component {
         <ToolBar
           toggleCheckAll={this.toggleCheckAll}
           checkedAll={this.state.checkedAll}
+          checked={this.state.checked}
+          updateList={this.props.updateList}
         />
         <div>
           <EmailList
