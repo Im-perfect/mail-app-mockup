@@ -5,15 +5,69 @@ import EmailDetails from "./EmailDetails";
 import ToolBar from "./ToolBar";
 
 export class EmailDetailsContainer extends Component {
+  state = {
+    checkedAll: false,
+    checked: this.props.emails.map(checked => false)
+  };
+
+  toggleCheck = checkedIndex => {
+    //all checked
+    if (this.state.checked.indexOf(false) === -1) {
+      this.setState({
+        checkedAll: false,
+        checked: this.state.checked.map((checked, index) =>
+          checkedIndex === index ? !checked : checked
+        )
+      });
+    }
+    //one unchecked, check that one
+    else if (
+      this.state.checked.filter(checked => !checked).length === 1 &&
+      this.state.checked.indexOf(false) === checkedIndex
+    ) {
+      this.setState({
+        checkedAll: true,
+        checked: this.state.checked.map((checked, index) =>
+          checkedIndex === index ? !checked : checked
+        )
+      });
+    } else {
+      this.setState({
+        checked: this.state.checked.map((checked, index) =>
+          checkedIndex === index ? !checked : checked
+        )
+      });
+    }
+  };
+
+  toggleCheckAll = () => {
+    if (!this.state.checkedAll) {
+      this.setState({
+        checkedAll: true,
+        checked: this.state.checked.map(checked => true)
+      });
+    } else {
+      this.setState({
+        checkedAll: false,
+        checked: this.state.checked.map(checked => false)
+      });
+    }
+  };
+
   render() {
     return (
       <div>
-        <ToolBar />
+        <ToolBar
+          toggleCheckAll={this.toggleCheckAll}
+          checkedAll={this.state.checkedAll}
+        />
         <div>
           <EmailList
             emails={this.props.emails}
             selectEmail={this.props.selectEmail}
             searchTerm={this.props.searchTerm}
+            checked={this.state.checked}
+            toggleCheck={this.toggleCheck}
           />
           <EmailDetails
             emails={this.props.emails}

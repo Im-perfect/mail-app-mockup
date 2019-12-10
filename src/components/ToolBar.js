@@ -14,7 +14,7 @@ export class ToolBar extends Component {
   render() {
     return (
       <div>
-        <input type="checkbox" onClick={this.toggleCheckAll} />
+        <input type="checkbox" onChange={this.props.toggleCheckAll} checked={this.props.checkedAll}/>
         <div>
             <button onClick={this.deleteEmail}><FontAwesomeIcon icon={faEyeSlash} /></button>
             <button><FontAwesomeIcon icon={faTrashAlt} /></button>
