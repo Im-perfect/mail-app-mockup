@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import Account from "./Account"
+import SearchBar from './SearchBar'
 
 export class HeaderBar extends Component {
     render() {
         return (
             <div>
+                <SearchBar searchSubject = {this.props.searchSubject}/>
                 <Account />
             </div>
         )
