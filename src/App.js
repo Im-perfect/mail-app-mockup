@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import "./App.css";
 import "./css/main.css";
 import SideBar from "./components/SideBar";
-import EmailList from "./components/EmailList";
 import HeaderBar from "./components/HeaderBar";
-import EmailDetails from "./components/EmailDetails";
+import EmailDetailsContainer from "./components/EmailDetailsContainer";
 
 class App extends React.Component {
   state = {
@@ -28,10 +27,7 @@ class App extends React.Component {
   };
 
   selectNext = () => {
-    if (
-      this.state.selectedEmailIndex <
-      this.state.emails.length - 1
-    )
+    if (this.state.selectedEmailIndex < this.state.emails.length - 1)
       this.setState({
         selectedEmailIndex: this.state.selectedEmailIndex + 1
       });
@@ -56,14 +52,11 @@ class App extends React.Component {
           <div>
             <HeaderBar searchSubject={this.searchSubject} />
             <div className="wrapper">
-              <EmailList
+              <EmailDetailsContainer
                 emails={this.state.emails}
-                selectEmail={this.selectEmail}
                 searchTerm={this.state.searchTerm}
-              />
-              <EmailDetails
-                emails={this.state.emails}
                 emailIndex={this.state.selectedEmailIndex}
+                selectEmail={this.selectEmail}
                 selectPrevious={this.selectPrevious}
                 selectNext={this.selectNext}
               />

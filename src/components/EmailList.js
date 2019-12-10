@@ -16,7 +16,7 @@ export class EmailList extends Component {
           {this.props.emails.map((mail, index) => {
             return (
               <li key={mail.date}>
-                <input type="checkbox"></input>
+                <input type="checkbox" name="email"></input>
                 <div
                   onClick={() => {
                     this.props.setEmailRead(mail.date);
