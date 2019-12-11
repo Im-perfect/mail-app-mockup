@@ -11,16 +11,6 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export class SideBar extends Component {
-  state = {
-    selected: "inbox"
-  };
-
-  sideBarSelect = selection => {
-    this.setState({
-      selected: selection
-    });
-  };
-
   render() {
     return (
       <div>
@@ -33,25 +23,32 @@ export class SideBar extends Component {
           </button>
         </div>
         <ul className="category">
-          <li name="inbox" onClick={() => this.sideBarSelect("inbox")}>
+          <li name="inbox" onClick={() => this.props.sideBarSelect("inbox")}>
             <FontAwesomeIcon icon={faInbox} />
             Inbox
             <span className="count">
-              {this.props.currentAccount.mail.filter(mail => mail.read==="false").length}
+              {this.props.currentAccount.mail.filter(
+                mail => mail.category === "inbox" && mail.read === "false"
+              ).length || null}
             </span>
           </li>
-          <li name="draft" onClick={() => this.sideBarSelect("drafts")}>
+          <li name="draft" onClick={() => this.props.sideBarSelect("drafts")}>
             <FontAwesomeIcon icon={faEdit} />
             Drafts
           </li>
-          <li name="sent" onClick={() => this.sideBarSelect("sent")}>
+          <li name="sent" onClick={() => this.props.sideBarSelect("sent")}>
             <FontAwesomeIcon icon={faPaperPlane} /> Sent
           </li>
-          <li name="spam" onClick={() => this.sideBarSelect("spam")}>
+          <li name="spam" onClick={() => this.props.sideBarSelect("spam")}>
             <FontAwesomeIcon icon={faMinusCircle} /> Spam
           </li>
-          <li name="trash" onClick={() => this.sideBarSelect("trash")}>
+          <li name="trash" onClick={() => this.props.sideBarSelect("trash")}>
             <FontAwesomeIcon icon={faTrashAlt} /> Trash
+            <span className="count">
+              {this.props.currentAccount.mail.filter(
+                mail => mail.category === "trash" && mail.read === "false"
+              ).length || null}
+            </span>
           </li>
         </ul>
       </div>

@@ -24,8 +24,13 @@ export class ToolBar extends Component {
           <button
             onClick={() => {
               this.props
-                .deleteEmail(this.props.checked)
-                .then(() => this.props.updateList());
+                .deleteEmail(
+                  this.props.currentAccount.address,
+                  this.props.emails.filter(
+                    (email, index) => this.props.checked[index]
+                  )
+                )
+                .then(() => this.props.resetCheck());
             }}
           >
             <FontAwesomeIcon icon={faTrashAlt} />
@@ -39,7 +44,7 @@ export class ToolBar extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = ({ currentAccount }) => ({ currentAccount });
 
 const mapDispatchToProps = { deleteEmail };
 

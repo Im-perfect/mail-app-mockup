@@ -6,7 +6,7 @@ import {
   faAngleDown
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { switchAccount } from "../actions/account";
+import { getAccount } from "../actions/account";
 
 export class Account extends Component {
   state = {
@@ -41,7 +41,7 @@ export class Account extends Component {
                 className="account-list-item"
                 key={item.address}
                 onClick={() => {
-                  this.props.switchAccount(index);
+                  this.props.getAccount(index);
                   this.toggleList();
                 }}
               >
@@ -60,6 +60,6 @@ const mapStateToProps = ({ accounts, currentAccount }) => ({
   currentAccount
 });
 
-const mapDispatchToProps = { switchAccount };
+const mapDispatchToProps = { getAccount };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);

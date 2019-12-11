@@ -5,14 +5,26 @@ import "./css/main.css";
 import SideBar from "./components/SideBar";
 import HeaderBar from "./components/HeaderBar";
 import EmailDetailsContainer from "./components/EmailDetailsContainer";
+import { getAccount } from "./actions/account";
 
 class App extends React.Component {
   state = {
     selectedEmailIndex: 0,
     searchTerm: "",
-    emails: this.props.currentAccount.mail.filter(
-      mail => mail.category === "inbox"
-    )
+    currentSelection: "inbox"
+  };
+
+  componentDidMount = () => {
+    this.props.getAccount(0);
+  };
+
+  sideBarSelect = selection => {
+    this.setState({
+      currentSelection: selection,
+      emails: this.props.currentAccount.mail.filter(
+        mail => mail.category === selection
+      )
+    });
   };
 
   selectEmail = index => {
@@ -29,7 +41,17 @@ class App extends React.Component {
   };
 
   selectNext = () => {
-    if (this.state.selectedEmailIndex < this.state.emails.length - 1)
+    if (
+      this.state.selectedEmailIndex <
+      this.props.currentAccount.mail.filter(
+        mail =>
+          mail.category === this.state.currentSelection &&
+          mail.subject
+            .toLowerCase()
+            .includes(this.state.searchTerm.toLowerCase())
+      ).length -
+        1
+    )
       this.setState({
         selectedEmailIndex: this.state.selectedEmailIndex + 1
       });
@@ -37,40 +59,45 @@ class App extends React.Component {
 
   searchSubject = term => {
     this.setState({
-      searchTerm: term,
-      emails: this.props.currentAccount.mail.filter(mail =>
-        mail.subject.toLowerCase().includes(term.toLowerCase())
-      )
+      searchTerm: term
     });
   };
 
-  updateList = () => {
-    console.log("update")
-    this.setState({
-      emails: this.props.currentAccount.mail.filter(
-        mail => mail.category === "inbox"
-      )
-    })
-  }
-
   render() {
+    if (!this.props.currentAccount) {
+      return <div>Loading...</div>;
+    }
     return (
       <div>
         <div id="side-bar">
-          <SideBar />
+          <SideBar
+            emails={this.props.currentAccount.mail.filter(
+              mail =>
+                mail.category === this.state.currentSelection &&
+                mail.subject
+                  .toLowerCase()
+                  .includes(this.state.searchTerm.toLowerCase())
+            )}
+            sideBarSelect={this.sideBarSelect}
+          />
         </div>
         <div id="mailbox-container">
           <div>
             <HeaderBar searchSubject={this.searchSubject} />
             <div className="wrapper">
               <EmailDetailsContainer
-                emails={this.state.emails}
+                emails={this.props.currentAccount.mail.filter(
+                  mail =>
+                    mail.category === this.state.currentSelection &&
+                    mail.subject
+                      .toLowerCase()
+                      .includes(this.state.searchTerm.toLowerCase())
+                )}
                 searchTerm={this.state.searchTerm}
                 emailIndex={this.state.selectedEmailIndex}
                 selectEmail={this.selectEmail}
                 selectPrevious={this.selectPrevious}
                 selectNext={this.selectNext}
-                updateList={this.updateList}
               />
             </div>
           </div>
@@ -81,6 +108,6 @@ class App extends React.Component {
 }
 const mapStateToProps = ({ currentAccount }) => ({ currentAccount });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = { getAccount };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

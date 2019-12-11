@@ -21,7 +21,7 @@ export class EmailList extends Component {
                 ></input>
                 <div
                   onClick={() => {
-                    this.props.setEmailRead(mail.date);
+                    this.props.setEmailRead(this.props.currentAccount.address, mail.date);
                     this.props.selectEmail(index);
                   }}
                 >

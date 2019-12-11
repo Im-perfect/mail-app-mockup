@@ -10,6 +10,10 @@ export class EmailDetailsContainer extends Component {
     checked: this.props.emails.map(checked => false)
   };
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ checked: nextProps.emails.map(checked => false) });
+  }
+
   toggleCheck = checkedIndex => {
     //all checked
     if (this.state.checked.indexOf(false) === -1) {
@@ -54,6 +58,13 @@ export class EmailDetailsContainer extends Component {
     }
   };
 
+  resetCheck = () => {
+    this.setState({
+      checkedAll: false,
+      checked: this.props.emails.map(checked => false)
+    });
+  };
+
   render() {
     return (
       <div>
@@ -61,7 +72,8 @@ export class EmailDetailsContainer extends Component {
           toggleCheckAll={this.toggleCheckAll}
           checkedAll={this.state.checkedAll}
           checked={this.state.checked}
-          updateList={this.props.updateList}
+          resetCheck={this.resetCheck}
+          emails={this.props.emails}
         />
         <div>
           <EmailList
