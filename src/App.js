@@ -82,9 +82,7 @@ class App extends React.Component {
           />
         </div>
         <div id="mailbox-container">
-          <div>
             <HeaderBar searchSubject={this.searchSubject} />
-            <div className="wrapper">
               <EmailDetailsContainer
                 emails={this.props.currentAccount.mail.filter(
                   mail =>
@@ -99,8 +97,6 @@ class App extends React.Component {
                 selectPrevious={this.selectPrevious}
                 selectNext={this.selectNext}
               />
-            </div>
-          </div>
         </div>
       </div>
     );

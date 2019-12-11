@@ -75,7 +75,7 @@ export class EmailDetailsContainer extends Component {
           resetCheck={this.resetCheck}
           emails={this.props.emails}
         />
-        <div>
+        <div id="email-detail-container">
           <EmailList
             emails={this.props.emails}
             selectEmail={this.props.selectEmail}

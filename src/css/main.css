@@ -7,16 +7,20 @@ body {
   margin: 0;
 }
 
-*:focus{
+*:focus {
   outline: none;
 }
 
-.wrapper {
-  display: flex;
+p, td {
+  font-size: 14px;
 }
 
 button {
   cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
 }
 
 #side-bar {
@@ -30,7 +34,6 @@ button {
 #mailbox-container {
   margin-left: 200px;
   height: 100vh;
-  background-color: rgb(248, 252, 255);
 }
 
 #header-bar {
@@ -127,7 +130,7 @@ button {
   border-bottom: 1px solid #dddddd;
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
   margin: 10px;
 }
 
@@ -144,7 +147,7 @@ input[type="checkbox"]{
   border-right: none;
 }
 
-.button-group button:hover{
+.button-group button:hover {
   background-color: #f1f1f1;
 }
 
@@ -161,6 +164,99 @@ input[type="checkbox"]{
   border-right-color: rgb(209, 209, 209);
 }
 
-#email-list {
-  width: 25%;
+#email-detail-container {
+  display: flex;
+  align-items: flex-start;
+}
+
+#email-list-container {
+  flex: 35%;
+  border-right: 1px solid #dddddd;
+  background-color: #f1f6f9;
+}
+
+.email-list {
+  padding-left: 0;
+  margin: 0;
+}
+
+.email-list li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #dddddd;
+  padding: 12px;
+}
+
+.email-list li:hover {
+  background-color: #cae6f5;
+  cursor: pointer;
+}
+
+.email-list-item-main {
+  display: flex;
+  align-items: center;
+}
+
+.email-list-item-main p {
+  margin: 6px 0;
+}
+
+.email-list-item-main.unread p{
+  font-weight: bold;
+}
+
+.email-list-item-main span {
+  font-size: 10px;
+  margin: 6px 0;
+  color: #696969;
+}
+
+#email-detail {
+  flex: 65%;
+}
+
+.email-detail-header {
+  padding: 12px 20px;
+  border-bottom: 1px solid #dddddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.email-content {
+  margin: 8px;
+  border: 1px solid #dddddd;
+  border-radius: 4px;
+}
+
+.email-info-header {
+  background-color: #f1f6f9;
+  border-bottom: 1px solid #dddddd;
+  padding: 6px 20px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.email-info-header th {
+  text-align: left;
+  font-size: 12px;
+  color: #696969;
+  font-weight: normal;
+  padding-right: 6px;
+}
+
+.email-info-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.email-info-header-right * {
+  margin-left: 12px;
+}
+
+.email-content-detail{
+  padding: 12px 20px;
 }

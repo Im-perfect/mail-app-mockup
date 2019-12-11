@@ -19,10 +19,10 @@ export class EmailDetails extends Component {
       ];
       const { surname, name } = this.props.currentAccount;
       return (
-        <div>
-          <div>
+        <div id="email-detail">
+          <div className="email-detail-header">
             <h3>{subject}</h3>
-            <div>
+            <div className="button-group">
               <button onClick={this.props.selectPrevious}>
                 <FontAwesomeIcon icon={faChevronLeft} />
               </button>
@@ -31,17 +31,32 @@ export class EmailDetails extends Component {
               </button>
             </div>
           </div>
-          <div>
-            <p>From: {senderName}</p>
-            <p>To: {`${name} ${surname}`}</p>
-            <p>{getDate(date)}</p>
-            <FontAwesomeIcon icon={faStar} />
+          <div className="email-content">
+            <div className="email-info-header">
+              <table>
+              <tbody>
+                <tr>
+                  <th>From:</th>
+                  <td>{senderName}</td>
+                </tr>
+                <tr>
+                  <th>To:</th>
+                  <td>{`${name} ${surname}`}</td>
+                </tr>
+                </tbody>
+              </table>
+
+              <div className="email-info-header-right">
+                <p>{getDate(date)}</p>
+                <FontAwesomeIcon icon={faStar} />
+              </div>
+            </div>
+            <p className="email-content-detail">{content}</p>
           </div>
-          <div>{content}</div>
         </div>
       );
     } else {
-      return <div>No content</div>;
+      return <div id="email-detail">No content</div>;
     }
   }
 }

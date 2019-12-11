@@ -8,8 +8,8 @@ import { getDate } from "../actions/helper";
 export class EmailList extends Component {
   render() {
     return (
-      <div id="email-list">
-        <ul>
+      <div id="email-list-container">
+        <ul className="email-list">
           {this.props.emails.map((mail, index) => {
             return (
               <li key={mail.date}>
@@ -19,17 +19,17 @@ export class EmailList extends Component {
                   onChange={() => this.props.toggleCheck(index)}
                   checked={this.props.checked[index]}
                 ></input>
-                <div
+                <div className={`email-list-item-main ${mail.read==="false"? "unread":null}`}
                   onClick={() => {
                     this.props.setEmailRead(this.props.currentAccount.address, mail.date);
                     this.props.selectEmail(index);
                   }}
                 >
                   <div>
-                    <h5>{mail.subject}</h5>
-                    <p>{mail["sender name"]}</p>
+                    <p>{mail.subject}</p>
+                    <span>{mail["sender name"]}</span>
                   </div>
-                  <div>{getDate(mail.date)}</div>
+                  <p>{getDate(mail.date)}</p>
                 </div>
 
                 <div>
