@@ -21,6 +21,11 @@ npm start
 ```
 
 ## Solution
+### Technologies
+This project is created with
+- React, Redux
+- HTML / CSS
+
 
 ## Assumptions
 - Indicator next to the inbox means the amount of unread mails
