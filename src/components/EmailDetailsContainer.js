@@ -67,7 +67,7 @@ export class EmailDetailsContainer extends Component {
 
   render() {
     return (
-      <div>
+      <div className="is-flex-column grow">
         <ToolBar
           toggleCheckAll={this.toggleCheckAll}
           checkedAll={this.state.checkedAll}

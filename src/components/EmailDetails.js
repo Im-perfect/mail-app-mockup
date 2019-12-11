@@ -19,7 +19,7 @@ export class EmailDetails extends Component {
       ];
       const { surname, name } = this.props.currentAccount;
       return (
-        <div id="email-detail">
+        <div id="email-detail" className="is-flex-column">
           <div className="email-detail-header">
             <h3>{subject}</h3>
             <div className="button-group">

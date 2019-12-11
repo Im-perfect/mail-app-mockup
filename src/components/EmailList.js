@@ -19,9 +19,15 @@ export class EmailList extends Component {
                   onChange={() => this.props.toggleCheck(index)}
                   checked={this.props.checked[index]}
                 ></input>
-                <div className={`email-list-item-main ${mail.read==="false"? "unread":null}`}
+                <div
+                  className={`email-list-item-main ${
+                    mail.read === "false" ? "unread" : null
+                  }`}
                   onClick={() => {
-                    this.props.setEmailRead(this.props.currentAccount.address, mail.date);
+                    this.props.setEmailRead(
+                      this.props.currentAccount.address,
+                      mail.date
+                    );
                     this.props.selectEmail(index);
                   }}
                 >
@@ -29,11 +35,10 @@ export class EmailList extends Component {
                     <p>{mail.subject}</p>
                     <span>{mail["sender name"]}</span>
                   </div>
-                  <p>{getDate(mail.date)}</p>
-                </div>
-
-                <div>
-                  <FontAwesomeIcon icon={faStar} />
+                  <div className="email-list-item-right">
+                    <p>{getDate(mail.date)}</p>
+                    <FontAwesomeIcon icon={faStar} />
+                  </div>
                 </div>
               </li>
             );

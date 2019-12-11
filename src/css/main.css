@@ -11,7 +11,8 @@ body {
   outline: none;
 }
 
-p, td {
+p,
+td {
   font-size: 14px;
 }
 
@@ -32,8 +33,10 @@ button {
 }
 
 #mailbox-container {
-  margin-left: 200px;
+  margin-left: 200px;  
   height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 #header-bar {
@@ -166,13 +169,12 @@ input[type="checkbox"] {
 
 #email-detail-container {
   display: flex;
-  align-items: flex-start;
+  flex: 1;
 }
 
 #email-list-container {
-  flex: 35%;
+  flex: 35% 1;
   border-right: 1px solid #dddddd;
-  background-color: #f1f6f9;
 }
 
 .email-list {
@@ -187,6 +189,7 @@ input[type="checkbox"] {
   justify-content: space-between;
   border-bottom: 1px solid #dddddd;
   padding: 12px;
+  background-color: #f1f6f9;
 }
 
 .email-list li:hover {
@@ -197,13 +200,15 @@ input[type="checkbox"] {
 .email-list-item-main {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex: 1;
 }
 
 .email-list-item-main p {
   margin: 6px 0;
 }
 
-.email-list-item-main.unread p{
+.email-list-item-main.unread p {
   font-weight: bold;
 }
 
@@ -211,6 +216,16 @@ input[type="checkbox"] {
   font-size: 10px;
   margin: 6px 0;
   color: #696969;
+}
+
+.email-list-item-right {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.email-list-item-right * {
+  margin-left: 12px;
 }
 
 #email-detail {
@@ -226,6 +241,7 @@ input[type="checkbox"] {
 }
 
 .email-content {
+  flex: 1;
   margin: 8px;
   border: 1px solid #dddddd;
   border-radius: 4px;
@@ -257,6 +273,15 @@ input[type="checkbox"] {
   margin-left: 12px;
 }
 
-.email-content-detail{
+.email-content-detail {
   padding: 12px 20px;
+}
+
+.is-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.grow {
+  flex: 1;
 }
