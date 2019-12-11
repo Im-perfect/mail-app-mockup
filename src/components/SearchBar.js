@@ -7,7 +7,7 @@ export class SearchBar extends Component {
   state = {
     term: ""
   };
-  
+
   searchHandler = event => {
     this.setState({
       term: event.target.value
@@ -16,14 +16,15 @@ export class SearchBar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="search-bar">
         <input
           type="text"
           placeholder="Search.."
           onChange={this.searchHandler}
           value={this.state.term}
+          className="search-text"
         />
-        <button onClick={()=>this.props.searchSubject(this.state.term)}>
+        <button className="search-button" onClick={()=>this.props.searchSubject(this.state.term)}>
           <FontAwesomeIcon icon={faSearch} />
         </button>
       </div>

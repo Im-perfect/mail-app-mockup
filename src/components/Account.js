@@ -6,7 +6,7 @@ import {
   faAngleDown
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { switchAccount } from "../actions/account";
+import { getAccount } from "../actions/account";
 
 export class Account extends Component {
   state = {
@@ -24,24 +24,26 @@ export class Account extends Component {
     const { accounts } = this.props;
     const { name, surname } = this.props.currentAccount;
     return (
-      <div>
-        <div onClick={this.toggleList}>
-          <FontAwesomeIcon icon={faUserTie} size="lg" />
+      <div onClick={this.toggleList} id="account">
+        <FontAwesomeIcon icon={faUserTie} size="lg" />
+        <div className="dropdown">
           <p>{`${name} ${surname}`}</p>
-          {listOpen ? (
-            <FontAwesomeIcon icon={faAngleUp} />
-          ) : (
-            <FontAwesomeIcon icon={faAngleDown} />
-          )}
+          <div className="dropdown-arrow">
+            {listOpen ? (
+              <FontAwesomeIcon icon={faAngleUp} />
+            ) : (
+              <FontAwesomeIcon icon={faAngleDown} />
+            )}
+          </div>
         </div>
         {listOpen && (
-          <ul className="account-list">
+          <ul className="dropdown-list">
             {accounts.map((item, index) => (
               <li
-                className="account-list-item"
+                className="dropdown-list-item"
                 key={item.address}
                 onClick={() => {
-                  this.props.switchAccount(index);
+                  this.props.getAccount(index);
                   this.toggleList();
                 }}
               >
@@ -60,6 +62,6 @@ const mapStateToProps = ({ accounts, currentAccount }) => ({
   currentAccount
 });
 
-const mapDispatchToProps = { switchAccount };
+const mapDispatchToProps = { getAccount };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Account);
