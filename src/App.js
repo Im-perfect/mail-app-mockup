@@ -79,6 +79,7 @@ class App extends React.Component {
                   .includes(this.state.searchTerm.toLowerCase())
             )}
             sideBarSelect={this.sideBarSelect}
+            currentSelection={this.state.currentSelection}
           />
         </div>
         <div id="mailbox-container">

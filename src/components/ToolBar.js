@@ -18,7 +18,7 @@ export class ToolBar extends Component {
           checked={this.props.checkedAll}
         />
         <div className="button-group">
-          <button>
+          <button className="disabled">
             <FontAwesomeIcon icon={faEyeSlash} />
           </button>
           <button
@@ -35,7 +35,7 @@ export class ToolBar extends Component {
           >
             <FontAwesomeIcon icon={faTrashAlt} />
           </button>
-          <button>
+          <button className="disabled">
             <FontAwesomeIcon icon={faMinusCircle} />
           </button>
         </div>

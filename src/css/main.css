@@ -30,6 +30,59 @@ button {
   height: 100%;
   position: fixed;
   overflow: auto;
+  color: white;
+  text-align: center;
+}
+
+#logo {
+  margin-top: 12px;
+  padding: 4px;
+  font-size: 24px;
+}
+
+.button.compose {
+  padding: 12px 24px;
+  background-color: #2A93C4;
+  font-size: 16px;
+  color: white;
+  border: none;
+  margin: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+}
+
+.button.compose:hover{
+  background-color: rgb(24, 142, 197);
+  box-shadow:none;
+}
+
+.category {
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+.category li {
+  list-style: none;
+  padding: 6px 12px 6px 24px;
+  display: flex;
+  align-items: center;
+}
+
+.category li.active{
+  background-color: #297290;
+}
+
+.category li:hover {
+  background-color: #297290;
+  cursor: pointer;
+}
+
+.category li svg {
+  margin-right: 12px;
+  font-size: 20px;
+}
+
+.count {
+  margin-left: 12px;
 }
 
 #mailbox-container {
@@ -165,6 +218,14 @@ input[type="checkbox"] {
   border-right-width: 1px;
   border-right-style: solid;
   border-right-color: rgb(209, 209, 209);
+}
+
+.disabled {
+  background-color: #f1f1f1;
+}
+
+.disabled:hover {
+  cursor: not-allowed;
 }
 
 #email-detail-container {
