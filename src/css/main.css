@@ -78,6 +78,41 @@ body {
   background-color: #f1f1f1;
 }
 
+.search-bar {
+  background: rgb(115, 161, 184);
+  height: 40px;
+  border-radius: 40px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-text {
+  width: 240px;
+  border: none;
+  background: none;
+  outline: none;
+  padding: 0 12px;
+  color: white;
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.search-text::placeholder {
+  color: rgb(221, 221, 221);
+}
+
+.search-button {
+  border: none;
+  background: rgb(115, 161, 184);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+
 #email-list {
   width: 25%;
 }
