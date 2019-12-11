@@ -232,6 +232,13 @@ input[type="checkbox"] {
   flex: 65%;
 }
 
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a1a1a1;
+}
+
 .email-detail-header {
   padding: 12px 20px;
   border-bottom: 1px solid #dddddd;

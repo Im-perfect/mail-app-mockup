@@ -56,7 +56,7 @@ export class EmailDetails extends Component {
         </div>
       );
     } else {
-      return <div id="email-detail">No content</div>;
+      return <div id="email-detail" className="empty"><p>No content</p></div>;
     }
   }
 }
