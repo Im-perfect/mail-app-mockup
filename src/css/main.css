@@ -25,6 +25,59 @@ body {
   background-color: aliceblue;
 }
 
+#header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #86b3c6;
+  padding: 12px;
+}
+
+#account {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.dropdown {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  position: relative;
+}
+.dropdown p {
+  margin: 4px 0;
+}
+
+.dropdown-arrow {
+  padding: 10px;
+}
+
+.dropdown-list {
+  position: absolute;
+  right: 10px;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 0;
+  padding: 0;
+}
+
+.dropdown-list li {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  list-style: none;
+}
+
+.dropdown-list li:hover {
+  background-color: #f1f1f1;
+}
+
 #email-list {
   width: 25%;
 }

@@ -24,21 +24,23 @@ export class Account extends Component {
     const { accounts } = this.props;
     const { name, surname } = this.props.currentAccount;
     return (
-      <div>
-        <div onClick={this.toggleList}>
-          <FontAwesomeIcon icon={faUserTie} size="lg" />
+      <div onClick={this.toggleList} id="account">
+        <FontAwesomeIcon icon={faUserTie} size="lg" />
+        <div className="dropdown">
           <p>{`${name} ${surname}`}</p>
-          {listOpen ? (
-            <FontAwesomeIcon icon={faAngleUp} />
-          ) : (
-            <FontAwesomeIcon icon={faAngleDown} />
-          )}
+          <div className="dropdown-arrow">
+            {listOpen ? (
+              <FontAwesomeIcon icon={faAngleUp} />
+            ) : (
+              <FontAwesomeIcon icon={faAngleDown} />
+            )}
+          </div>
         </div>
         {listOpen && (
-          <ul className="account-list">
+          <ul className="dropdown-list">
             {accounts.map((item, index) => (
               <li
-                className="account-list-item"
+                className="dropdown-list-item"
                 key={item.address}
                 onClick={() => {
                   this.props.getAccount(index);

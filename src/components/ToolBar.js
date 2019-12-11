@@ -11,7 +11,7 @@ import { deleteEmail } from "../actions/email";
 export class ToolBar extends Component {
   render() {
     return (
-      <div>
+      <div id="tool-bar">
         <input
           type="checkbox"
           onChange={this.props.toggleCheckAll}

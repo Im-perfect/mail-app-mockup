@@ -6,7 +6,7 @@ import SearchBar from './SearchBar'
 export class HeaderBar extends Component {
     render() {
         return (
-            <div>
+            <div id="header-bar">
                 <SearchBar searchSubject = {this.props.searchSubject}/>
                 <Account />
             </div>
