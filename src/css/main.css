@@ -7,8 +7,16 @@ body {
   margin: 0;
 }
 
+*:focus{
+  outline: none;
+}
+
 .wrapper {
   display: flex;
+}
+
+button {
+  cursor: pointer;
 }
 
 #side-bar {
@@ -22,7 +30,7 @@ body {
 #mailbox-container {
   margin-left: 200px;
   height: 100vh;
-  background-color: aliceblue;
+  background-color: rgb(248, 252, 255);
 }
 
 #header-bar {
@@ -111,6 +119,46 @@ body {
   align-items: center;
   color: white;
   cursor: pointer;
+}
+
+#tool-bar {
+  display: flex;
+  padding: 12px;
+  border-bottom: 1px solid #dddddd;
+}
+
+input[type="checkbox"]{
+  margin: 10px;
+}
+
+.button-group {
+  display: flex;
+}
+
+.button-group button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 6px 8px;
+  width: 36px;
+  border-color: rgb(209, 209, 209);
+  border-right: none;
+}
+
+.button-group button:hover{
+  background-color: #f1f1f1;
+}
+
+.button-group button:first-child {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.button-group button:last-child {
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: rgb(209, 209, 209);
 }
 
 #email-list {

@@ -17,7 +17,7 @@ export class ToolBar extends Component {
           onChange={this.props.toggleCheckAll}
           checked={this.props.checkedAll}
         />
-        <div>
+        <div className="button-group">
           <button>
             <FontAwesomeIcon icon={faEyeSlash} />
           </button>
