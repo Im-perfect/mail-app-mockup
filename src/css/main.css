@@ -111,7 +111,7 @@ button {
 .dropdown {
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   position: relative;
 }
 .dropdown p {
@@ -258,6 +258,10 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
+.email-list li.active {
+  background-color: #84abc0;
+}
+
 .email-list-item-main {
   display: flex;
   align-items: center;
@@ -281,7 +285,7 @@ input[type="checkbox"] {
 
 .email-list-item-right {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
 }
 

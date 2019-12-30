@@ -12,7 +12,8 @@ export class EmailList extends Component {
         <ul className="email-list">
           {this.props.emails.map((mail, index) => {
             return (
-              <li key={mail.date}>
+              <li key={mail.date}  className={this.props.emailIndex===index?"active":null}
+              >
                 <input
                   type="checkbox"
                   name="email"

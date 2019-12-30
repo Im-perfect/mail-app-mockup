@@ -79,6 +79,7 @@ export class EmailDetailsContainer extends Component {
           <EmailList
             emails={this.props.emails}
             selectEmail={this.props.selectEmail}
+            emailIndex={this.props.emailIndex}
             searchTerm={this.props.searchTerm}
             checked={this.state.checked}
             toggleCheck={this.toggleCheck}
